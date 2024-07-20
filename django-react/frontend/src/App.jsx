@@ -34,6 +34,7 @@ function App() {
         <Route path="/login" element={<Login></Login>}/>
         <Route path="/logout" element={<logout></logout>}/>
         <Route path="/register" element={<Register></Register>}/>
+        <Route path="/home" element={<Home/>}/>
         <Route path="*" element={<NotFound></NotFound>}></Route>
       </Routes>
     </BrowserRouter>

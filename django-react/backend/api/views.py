@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.contrib.auth.models import User
+from rest_framework.decorators import permission_classes
 from rest_framework import generics
 from .serializers import UserSerializers, NoteSerializer
 from rest_framework.permissions import IsAuthenticated, AllowAny
@@ -29,6 +30,7 @@ class NoteDelete(generics.DestroyAPIView):
 
 
 # Create your views here.
+
 class CreateUserView(generics.CreateAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializers
