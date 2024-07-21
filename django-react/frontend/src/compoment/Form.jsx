@@ -1,7 +1,8 @@
 import { useState } from "react";
-import api from "../api";import { useNavigate } from "react-router-dom";
+import api from "../api"; import { useNavigate } from "react-router-dom";
 import { ACCESS_TOKEN, REFRESH_TOKEN } from "../constants";
 import "../styles/Form.css"
+import LoadingIndicator from "./LoadingIndicator";
 
 
 function Form({ route, method }) {
@@ -10,7 +11,7 @@ function Form({ route, method }) {
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
 
-    const name = method === "login" ? "Login" : "Register";
+    const message = method === "login" ? ["Login", "Register", "Already have account? Try "] : ["Register", "Login", "Don't have account? Try "];
 
     const handleSubmit = async (e) => {
         setLoading(true);
@@ -35,7 +36,7 @@ function Form({ route, method }) {
 
     return (
         <form onSubmit={handleSubmit} className="form-container">
-            <h1>{name}</h1>
+            <h1>{message[0]}</h1>
             <input
                 className="form-input"
                 type="text"
@@ -50,9 +51,13 @@ function Form({ route, method }) {
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="Password"
             />
+            {loading && <LoadingIndicator />}
             <button className="form-button" type="submit">
-                {name}
+                {message[0]}
             </button>
+            <nav >
+                {message[2]} <a href={`/${message[1]}`}>{message[1]}</a>
+            </nav>
         </form>
     );
 }

@@ -34,3 +34,8 @@
   .form-button:hover {
     background-color: #0056b3;
   }
+
+  a {
+    text-decoration: none !important;
+    color: #007bff;
+  }
