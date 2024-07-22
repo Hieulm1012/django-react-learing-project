@@ -6,17 +6,11 @@ import NotFound from "./pages/NotFound"
 import Register from "./pages/Register"
 import ProtectedRoute from "./compoment/ProtectedRoute"
 
-function Logout(){
-  localStorage.clear()
-  return <Navigate to="/login" />
-  
-}
 
 function RegisterAndLogout(){
   localStorage.clear()
   return <Register />
 }
-
 
 
 function App() {
